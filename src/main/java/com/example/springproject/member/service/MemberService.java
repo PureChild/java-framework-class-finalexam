@@ -25,7 +25,7 @@ public class MemberService {
     }
 
     public int memberUpdateService(MemberVO member) throws Exception{
-        return memberMapper.meberUpdate(member);
+        return memberMapper.memberUpdate(member);
     }
 
     public int memberDeleteService(int id) throws Exception{

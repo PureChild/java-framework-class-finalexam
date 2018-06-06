@@ -50,9 +50,17 @@ public class MemberController {
     }
 
     @RequestMapping("/updateProc")
-    private int boardUpdateProc(HttpServletRequest request) throws Exception{
-        MemberVO member = (MemberVO) request.getParameterMap();
-        return memberService.memberUpdateService(member);
+    private String memberUpdateProc(HttpServletRequest request) throws Exception{
+        MemberVO member = new MemberVO();
+
+        member.setName(request.getParameter("name"));
+        member.setPassword(request.getParameter("password"));
+        member.setPhoto(request.getParameter("photo"));
+        member.setId(Integer.parseInt(request.getParameter("id")));
+
+        memberService.memberUpdateService(member);
+
+        return "redirect:/list";
     }
 
     @RequestMapping("/delete/{id}")

@@ -20,7 +20,7 @@ public interface MemberMapper {
     public int memberInsert(MemberVO member) throws Exception;
 
     // 사용자 삭제
-    public int meberUpdate(MemberVO member) throws Exception;
+    public int memberUpdate(MemberVO member) throws Exception;
 
     // 사용자 삭제
     public int memberDelete(int id) throws Exception;

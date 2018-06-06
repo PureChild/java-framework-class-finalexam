@@ -41,7 +41,7 @@
         <if test="name != null and (password != null or photo !=null)"> , </if>
 
         <if test="password != null">
-            passeword = #{password}
+            password = #{password}
         </if>
 
         <if test="password != null and photo !=null"> , </if>

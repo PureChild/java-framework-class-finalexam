@@ -10,6 +10,8 @@
     <body>
         <h1> 회원정보 </h1>
 
+        <button class="btn btn-primary" onclick="location.href='/update/${detail.id}'">수정</button>
+
         <div class="container">
             <form action="/insertProc" method="post">
                 <div class="form-group">
