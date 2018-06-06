@@ -15,4 +15,7 @@ public interface MemberMapper {
 
     // 사용자 상세
     public MemberVO memberDetail(int id) throws Exception;
+
+    // 사용자 추가
+    public int memberInsert(MemberVO member) throws Exception;
 }

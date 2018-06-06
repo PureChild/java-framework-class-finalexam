@@ -19,4 +19,8 @@ public class MemberService {
     public MemberVO memberDetailService(int id) throws Exception{
         return memberMapper.memberDetail(id);
     }
+
+    public int memberInsertService(MemberVO member) throws Exception{
+        return memberMapper.memberInsert(member);
+    }
 }

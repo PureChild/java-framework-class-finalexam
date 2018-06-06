@@ -24,4 +24,10 @@
         WHERE
         id = #{id}
     </select>
+
+    <insert id="memberInsert" parameterType="com.example.springproject.member.domain.MemberVO">
+        INSERT INTO
+        userinfo (name,password,photo)
+        VALUES(#{name},#{password},#{photo})
+    </insert>
 </mapper>
