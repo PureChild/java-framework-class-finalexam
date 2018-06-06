@@ -35,4 +35,22 @@ public class MemberController {
         MemberVO member = (MemberVO) request.getParameterMap();
         return memberService.memberInsertService(member);
     }
+
+    @RequestMapping("/update/{id}") // 사용자 수정폼 호출
+    private String memberUpdateForm(@PathVariable int id, Model model) throws Exception{
+        model.addAttribute("detail", memberService.memberDetailService(id));
+        return "update";
+    }
+
+    @RequestMapping("/updateProc")
+    private int boardUpdateProc(HttpServletRequest request) throws Exception{
+        MemberVO member = (MemberVO) request.getParameterMap();
+        return memberService.memberUpdateService(member);
+    }
+
+    @RequestMapping("/delete/{id}")
+    private String memberDelete(@PathVariable int id) throws Exception{
+        memberService.memberDeleteService(id);
+        return "redirect:/list";
+    }
 }

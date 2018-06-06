@@ -18,4 +18,10 @@ public interface MemberMapper {
 
     // 사용자 추가
     public int memberInsert(MemberVO member) throws Exception;
+
+    // 사용자 삭제
+    public int meberUpdate(MemberVO member) throws Exception;
+
+    // 사용자 삭제
+    public int memberDelete(int id) throws Exception;
 }

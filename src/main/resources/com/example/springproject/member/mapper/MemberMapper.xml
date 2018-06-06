@@ -30,4 +30,29 @@
         userinfo (name,password,photo)
         VALUES(#{name},#{password},#{photo})
     </insert>
+
+    <update id="memberUpdate" parameterType="com.example.springproject.member.domain.MemberVO">
+        UPDATE userinfo
+        SET
+        <if test="name != null">
+            name = #{name}
+        </if>
+
+        <if test="name != null and (password != null or photo !=null)"> , </if>
+
+        <if test="password != null">
+            passeword = #{password}
+        </if>
+
+        <if test="password != null and photo !=null"> , </if>
+
+        <if test="photo != null">
+            photo = #{photo}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="memberDelete" parameterType="int">
+        DELETE FROM userinfo WHERE id = #{id}
+    </delete>
 </mapper>
