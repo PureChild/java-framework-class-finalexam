@@ -10,4 +10,10 @@
         COUNT(*)
         FROM userinfo
     </select>
+
+    <select id="memberList" resultType="com.example.springproject.member.domain.MemberVO">
+        SELECT
+        *
+        FROM userinfo
+    </select>
 </mapper>
