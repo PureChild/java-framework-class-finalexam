@@ -31,9 +31,16 @@ public class MemberController {
     }
 
     @RequestMapping("/insertProc")
-    private int memberInsertProc(HttpServletRequest request) throws Exception{
-        MemberVO member = (MemberVO) request.getParameterMap();
-        return memberService.memberInsertService(member);
+    private String memberInsertProc(HttpServletRequest request) throws Exception{
+        MemberVO member = new MemberVO();
+
+        member.setName(request.getParameter("name"));
+        member.setPassword(request.getParameter("password"));
+        member.setPhoto(request.getParameter("photo"));
+
+        memberService.memberInsertService(member);
+
+        return "redirect:/list";
     }
 
     @RequestMapping("/update/{id}") // 사용자 수정폼 호출
