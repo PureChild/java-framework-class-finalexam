@@ -21,7 +21,7 @@
                     <th>이름</th>
                 </tr>
                 <core:forEach var="l" items="${list}">
-                    <tr>
+                    <tr onclick="location.href='/detail/${l.id}'">
                         <td>${l.id}</td>
                         <td>${l.photo}</td>
                         <td>${l.name}</td>

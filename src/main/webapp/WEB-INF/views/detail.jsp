@@ -8,6 +8,23 @@
     </head>
 
     <body>
-    ${detail}
+        <h1> 회원정보 </h1>
+
+        <div class="container">
+            <form action="/insertProc" method="post">
+                <div class="form-group">
+                    <label>이름</label>
+                    <p>${detail.name}</p>
+                </div>
+                <div class="form-group">
+                    <label>비밀번호</label>
+                    <p>${detail.password}</p>
+                </div>
+                <div class="form-group">
+                    <label>프로필사진</label>
+                    <p>${detail.photo}</p>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
