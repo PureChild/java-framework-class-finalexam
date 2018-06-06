@@ -10,6 +10,9 @@ import java.util.List;
 public interface MemberMapper {
     public int cntMember() throws Exception;
 
-    //게시글 목록
+    // 사용자 목록
     public List<MemberVO> memberList() throws Exception;
+
+    // 사용자 상세
+    public MemberVO memberDetail(int id) throws Exception;
 }

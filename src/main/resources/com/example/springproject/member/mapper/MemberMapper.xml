@@ -16,4 +16,12 @@
         *
         FROM userinfo
     </select>
+
+    <select id="memberDetail" parameterType="int" resultType="com.example.springproject.member.domain.MemberVO">
+        SELECT
+        *
+        FROM userinfo
+        WHERE
+        id = #{id}
+    </select>
 </mapper>
