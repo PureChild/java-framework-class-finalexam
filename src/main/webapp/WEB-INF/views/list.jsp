@@ -30,5 +30,7 @@
 
             </table>
         </div>
+
+        <%@ include file="bootstrap.jsp" %>
     </body>
 </html>
