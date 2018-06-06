@@ -11,6 +11,7 @@
         <h1> 회원정보 </h1>
 
         <button class="btn btn-primary" onclick="location.href='/update/${detail.id}'">수정</button>
+        <button class="btn btn-danger" onclick="location.href='/delete/${detail.id}'">삭제</button>
 
         <div class="container">
             <form action="/insertProc" method="post">
