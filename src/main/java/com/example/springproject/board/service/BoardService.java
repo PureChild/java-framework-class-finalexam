@@ -13,22 +13,22 @@ public class BoardService {
     BoardMapper boardMapper;
 
     public List<BoardVO> boardListService() throws Exception{
-        return boardMapper.memberList();
+        return boardMapper.boardList();
     }
 
     public BoardVO boardDetailService(int id) throws Exception{
-        return boardMapper.memberDetail(id);
+        return boardMapper.boardDetail(id);
     }
 
     public int boardInsertService(BoardVO board) throws Exception{
-        return boardMapper.memberInsert(board);
+        return boardMapper.boardInsert(board);
     }
 
     public int boardUpdateService(BoardVO board) throws Exception{
-        return boardMapper.memberUpdate(board);
+        return boardMapper.boardUpdate(board);
     }
 
     public int boardDeleteService(int id) throws Exception{
-        return boardMapper.memberDelete(id);
+        return boardMapper.boardDelete(id);
     }
 }

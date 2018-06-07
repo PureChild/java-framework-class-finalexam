@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.springproject.board.mapper.BoardMapper">
+
+    <select id="boardList" resultType="com.example.springproject.board.domain.BoardVO">
+        SELECT
+        *
+        FROM userinfo
+    </select>
+
+    <select id="boardDetail" parameterType="int" resultType="com.example.springproject.board.domain.BoardVO">
+        SELECT
+        *
+        FROM userinfo
+        WHERE
+        id = #{id}
+    </select>
+
+    <insert id="boardInsert" parameterType="com.example.springproject.board.domain.BoardVO">
+        INSERT INTO
+        userinfo (name,password,photo)
+        VALUES(#{name},#{password},#{photo})
+    </insert>
+
+    <update id="boardUpdate" parameterType="com.example.springproject.board.domain.BoardVO">
+        UPDATE userinfo
+        SET
+        <if test="name != null">
+            name = #{name}
+        </if>
+
+        <if test="name != null and (password != null or photo !=null)"> , </if>
+
+        <if test="password != null">
+            password = #{password}
+        </if>
+
+        <if test="password != null and photo !=null"> , </if>
+
+        <if test="photo != null">
+            photo = #{photo}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="boardDelete" parameterType="int">
+        DELETE FROM userinfo WHERE id = #{id}
+    </delete>
+</mapper>

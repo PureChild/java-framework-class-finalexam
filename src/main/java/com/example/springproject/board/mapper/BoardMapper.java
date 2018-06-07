@@ -8,20 +8,18 @@ import java.util.List;
 // DB에 접근하는 클래스이므로 @Repository
 @Repository("com.example.springproject.board.mapper.BoardMapper")
 public interface BoardMapper {
-    public int cntMember() throws Exception;
+    // 게시글 목록
+    public List<BoardVO> boardList() throws Exception;
 
-    // 사용자 목록
-    public List<BoardVO> memberList() throws Exception;
+    // 게시글 상세
+    public BoardVO boardDetail(int id) throws Exception;
 
-    // 사용자 상세
-    public BoardVO memberDetail(int id) throws Exception;
+    // 게시글 추가
+    public int boardInsert(BoardVO member) throws Exception;
 
-    // 사용자 추가
-    public int memberInsert(BoardVO member) throws Exception;
+    // 게시글 수정
+    public int boardUpdate(BoardVO member) throws Exception;
 
-    // 사용자 삭제
-    public int memberUpdate(BoardVO member) throws Exception;
-
-    // 사용자 삭제
-    public int memberDelete(int id) throws Exception;
+    // 게시글 삭제
+    public int boardDelete(int id) throws Exception;
 }

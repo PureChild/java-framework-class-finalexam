@@ -16,22 +16,22 @@ public class BoardController {
     BoardService boardService;
 
     @RequestMapping("/") // 게시글 리스트 화면 호출
-    private String memberList(Model model) throws Exception{
+    private String boardList(Model model) throws Exception{
         model.addAttribute("list", boardService.boardListService());
         return "board/list";
     }
     @RequestMapping("/detail/{id}")
-    private String memberDetail(@PathVariable int id, Model model) throws Exception{
+    private String boardDetail(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", boardService.boardDetailService(id));
         return "board/detail";
     }
     @RequestMapping("/insert") // 게시글 작성폼 호출
-    private String memberInsertForm(){
-        return "member/insert";
+    private String boardInsertForm(){
+        return "board/insert";
     }
 
     @RequestMapping("/insertProc")
-    private String memberInsertProc(HttpServletRequest request) throws Exception{
+    private String boardInsertProc(HttpServletRequest request) throws Exception{
         BoardVO member = new BoardVO();
 
         member.setName(request.getParameter("name"));
@@ -44,13 +44,13 @@ public class BoardController {
     }
 
     @RequestMapping("/update/{id}") // 게시글 수정폼 호출
-    private String memberUpdateForm(@PathVariable int id, Model model) throws Exception{
+    private String boardUpdateForm(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", boardService.boardDetailService(id));
         return "board/update";
     }
 
     @RequestMapping("/updateProc")
-    private String memberUpdateProc(HttpServletRequest request) throws Exception{
+    private String boardUpdateProc(HttpServletRequest request) throws Exception{
         BoardVO member = new BoardVO();
 
         member.setName(request.getParameter("name"));
@@ -64,7 +64,7 @@ public class BoardController {
     }
 
     @RequestMapping("/delete/{id}")
-    private String memberDelete(@PathVariable int id) throws Exception{
+    private String boardDelete(@PathVariable int id) throws Exception{
         boardService.boardDeleteService(id);
         return "redirect:/";
     }
