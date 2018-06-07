@@ -4,31 +4,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User Update</title>
+        <title>Insert Form</title>
     </head>
 
     <body>
-        <h1> 사용자 정보 수정 </h1>
+        <h1> 회원가입 </h1>
 
         <div class="container">
-            <form action="/updateProc" method="post">
+            <form action="/insertProc" method="post">
                 <div class="form-group">
                     <label for="name">이름</label>
-                    <input type="text" class="form-control" id="name" name="name" value="${detail.name}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요.">
                 </div>
                 <div class="form-group">
                     <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" name="password" value="${detail.password}">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요.">
                 </div>
                 <div class="form-group">
-                    <label for="photo">이름</label>
-                    <input type="file" class="form-control" id="photo" name="photo" value="${detail.photo}">
+                    <label for="photo">프로필사진</label>
+                    <input type="file" class="form-control" id="photo" name="photo"></input>
                 </div>
-                <input type="hidden" name="id" value="${id}"/>
-                <button type="submit" class="btn btn-primary">수정</button>
+                <button type="submit" class="btn btn-primary">회원가입</button>
             </form>
         </div>
 
-        <%@ include file="bootstrap.jsp" %>
+        <%@ include file="../bootstrap.jsp" %>
     </body>
 </html>

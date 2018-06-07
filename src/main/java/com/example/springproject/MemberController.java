@@ -15,19 +15,19 @@ public class MemberController {
     @Resource(name="com.example.springproject.member.service.MemberService")
     MemberService memberService;
 
-    @RequestMapping("/list") // 사용자 리스트 화면 호출
+    @RequestMapping("/member") // 사용자 리스트 화면 호출
     private String memberList(Model model) throws Exception{
         model.addAttribute("list", memberService.memberListService());
-        return "list";
+        return "member/list";
     }
     @RequestMapping("/detail/{id}")
     private String memberDetail(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(id));
-        return "detail";
+        return "member/detail";
     }
     @RequestMapping("/insert") // 사용자 작성폼 호출
     private String memberInsertForm(){
-        return "insert";
+        return "member/insert";
     }
 
     @RequestMapping("/insertProc")
@@ -40,13 +40,13 @@ public class MemberController {
 
         memberService.memberInsertService(member);
 
-        return "redirect:/list";
+        return "redirect:/member";
     }
 
     @RequestMapping("/update/{id}") // 사용자 수정폼 호출
     private String memberUpdateForm(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(id));
-        return "update";
+        return "member/update";
     }
 
     @RequestMapping("/updateProc")
@@ -60,12 +60,12 @@ public class MemberController {
 
         memberService.memberUpdateService(member);
 
-        return "redirect:/list";
+        return "redirect:/member";
     }
 
     @RequestMapping("/delete/{id}")
     private String memberDelete(@PathVariable int id) throws Exception{
         memberService.memberDeleteService(id);
-        return "redirect:/list";
+        return "redirect:/member";
     }
 }

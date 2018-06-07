@@ -30,6 +30,6 @@
             </form>
         </div>
 
-        <%@ include file="bootstrap.jsp" %>
+        <%@ include file="../bootstrap.jsp" %>
     </body>
 </html>
