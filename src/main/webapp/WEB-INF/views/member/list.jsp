@@ -11,7 +11,7 @@
 
     <body>
         <h1>사용자 목록</h1>
-        <button class="btn btn-primary" onclick="location.href='/insert'">회원가입</button>
+        <button class="btn btn-primary" onclick="location.href='/member/insert'">회원가입</button>
 
         <div class="container">
             <table class="table table-hover">
@@ -21,7 +21,7 @@
                     <th>이름</th>
                 </tr>
                 <core:forEach var="l" items="${list}">
-                    <tr onclick="location.href='/detail/${l.id}'">
+                    <tr onclick="location.href='/member/detail/${l.id}'">
                         <td>${l.id}</td>
                         <td>${l.photo}</td>
                         <td>${l.name}</td>

@@ -1,4 +1,4 @@
-package com.example.springproject;
+package com.example.springproject.member.controller;
 
 import com.example.springproject.member.domain.MemberVO;
 import com.example.springproject.member.service.MemberService;
@@ -20,17 +20,17 @@ public class MemberController {
         model.addAttribute("list", memberService.memberListService());
         return "member/list";
     }
-    @RequestMapping("/detail/{id}")
+    @RequestMapping("/member/detail/{id}")
     private String memberDetail(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(id));
         return "member/detail";
     }
-    @RequestMapping("/insert") // 사용자 작성폼 호출
+    @RequestMapping("/member/insert") // 사용자 작성폼 호출
     private String memberInsertForm(){
         return "member/insert";
     }
 
-    @RequestMapping("/insertProc")
+    @RequestMapping("/member/insertProc")
     private String memberInsertProc(HttpServletRequest request) throws Exception{
         MemberVO member = new MemberVO();
 
@@ -43,13 +43,13 @@ public class MemberController {
         return "redirect:/member";
     }
 
-    @RequestMapping("/update/{id}") // 사용자 수정폼 호출
+    @RequestMapping("/member/update/{id}") // 사용자 수정폼 호출
     private String memberUpdateForm(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(id));
         return "member/update";
     }
 
-    @RequestMapping("/updateProc")
+    @RequestMapping("/member/updateProc")
     private String memberUpdateProc(HttpServletRequest request) throws Exception{
         MemberVO member = new MemberVO();
 
@@ -63,7 +63,7 @@ public class MemberController {
         return "redirect:/member";
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/member/delete/{id}")
     private String memberDelete(@PathVariable int id) throws Exception{
         memberService.memberDeleteService(id);
         return "redirect:/member";

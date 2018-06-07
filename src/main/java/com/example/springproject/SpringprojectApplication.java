@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import javax.sql.DataSource;
 
 @SpringBootApplication
-@MapperScan(value = {"com.example.springproject.member.mapper"}) // Mapper 인터페이스 인식
+@MapperScan(value = {"com.example.springproject.member.mapper","com.example.springproject.board.mapper"}) // Mapper 인터페이스 인식
 public class SpringprojectApplication {
 
 	public static void main(String[] args) {

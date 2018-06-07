@@ -11,7 +11,7 @@
         <h1> 사용자 정보 수정 </h1>
 
         <div class="container">
-            <form action="/updateProc" method="post">
+            <form action="/member/updateProc" method="post">
                 <div class="form-group">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" id="name" name="name" value="${detail.name}">
