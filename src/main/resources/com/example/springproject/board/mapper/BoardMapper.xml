@@ -8,45 +8,39 @@
     <select id="boardList" resultType="com.example.springproject.board.domain.BoardVO">
         SELECT
         *
-        FROM userinfo
+        FROM board
     </select>
 
     <select id="boardDetail" parameterType="int" resultType="com.example.springproject.board.domain.BoardVO">
         SELECT
         *
-        FROM userinfo
+        FROM board
         WHERE
-        id = #{id}
+        bno = #{bno}
     </select>
 
     <insert id="boardInsert" parameterType="com.example.springproject.board.domain.BoardVO">
         INSERT INTO
-        userinfo (name,password,photo)
-        VALUES(#{name},#{password},#{photo})
+        board (title,content,user)
+        VALUES(#{title},#{content},#{user})
     </insert>
 
     <update id="boardUpdate" parameterType="com.example.springproject.board.domain.BoardVO">
-        UPDATE userinfo
+        UPDATE board
         SET
-        <if test="name != null">
-            name = #{name}
+        <if test="title != null">
+            title = #{title}
         </if>
 
-        <if test="name != null and (password != null or photo !=null)"> , </if>
+        <if test="title != null and content != null"> , </if>
 
-        <if test="password != null">
-            password = #{password}
+        <if test="content != null">
+            content = #{content}
         </if>
-
-        <if test="password != null and photo !=null"> , </if>
-
-        <if test="photo != null">
-            photo = #{photo}
-        </if>
-        WHERE id = #{id}
+        WHERE bno = #{bno}
     </update>
 
     <delete id="boardDelete" parameterType="int">
-        DELETE FROM userinfo WHERE id = #{id}
+        DELETE FROM board WHERE bno = #{bno}
     </delete>
 </mapper>

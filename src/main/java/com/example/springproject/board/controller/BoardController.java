@@ -55,7 +55,7 @@ public class BoardController {
 
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
-        board.setUser(request.getParameter("user"));
+        board.setBno(Integer.parseInt(request.getParameter("bno")));
 
         boardService.boardUpdateService(board);
 

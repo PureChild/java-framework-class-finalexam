@@ -8,23 +8,23 @@
     </head>
 
     <body>
-        <h1> 회원가입 </h1>
+        <h1> 글쓰기 </h1>
 
         <div class="container">
             <form action="/insertProc" method="post">
                 <div class="form-group">
-                    <label for="name">이름</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요.">
+                    <label for="title">제목</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요.">
                 </div>
                 <div class="form-group">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요.">
+                    <label for="content">내용</label>
+                    <textarea class="form-control" id="content" name="content" placeholder="내용을 입력하세요."></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="photo">프로필사진</label>
-                    <input type="file" class="form-control" id="photo" name="photo"></input>
+                    <label for="user">작성자</label>
+                    <input type="text" class="form-control" id="user" name="user"></input>
                 </div>
-                <button type="submit" class="btn btn-primary">회원가입</button>
+                <button type="submit" class="btn btn-primary">작성</button>
             </form>
         </div>
 

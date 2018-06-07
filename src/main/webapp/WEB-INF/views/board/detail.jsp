@@ -4,28 +4,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User Detail</title>
+        <title>Board Detail</title>
     </head>
 
     <body>
-        <h1> 회원정보 </h1>
+        <h1> 게시판 </h1>
 
-        <button class="btn btn-primary" onclick="location.href='/update/${detail.id}'">수정</button>
-        <button class="btn btn-danger" onclick="location.href='/delete/${detail.id}'">삭제</button>
+        <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
+        <button class="btn btn-danger" onclick="location.href='/delete/${detail.bno}'">삭제</button>
 
         <div class="container">
             <form action="/insertProc" method="post">
                 <div class="form-group">
-                    <label>이름</label>
-                    <p>${detail.name}</p>
+                    <label>제목</label>
+                    <p>${detail.title}</p>
                 </div>
                 <div class="form-group">
-                    <label>비밀번호</label>
-                    <p>${detail.password}</p>
+                    <label>내용</label>
+                    <p>${detail.content}</p>
                 </div>
                 <div class="form-group">
-                    <label>프로필사진</label>
-                    <p>${detail.photo}</p>
+                    <label>작성자</label>
+                    <p>${detail.user}</p>
+                </div>
+                <div class="form-group">
+                    <label>공감</label>
+                    <p>${detail.cntLike}</p>
                 </div>
             </form>
         </div>
