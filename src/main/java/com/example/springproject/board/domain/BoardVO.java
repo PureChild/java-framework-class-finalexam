@@ -4,8 +4,9 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-    private int id;
-    private String name;
-    private String password;
-    private String photo;
+    private int bno;
+    private String title;
+    private String content;
+    private String user;
+    private int cntLike;
 }
