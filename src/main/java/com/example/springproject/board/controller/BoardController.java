@@ -32,13 +32,13 @@ public class BoardController {
 
     @RequestMapping("/insertProc")
     private String boardInsertProc(HttpServletRequest request) throws Exception{
-        BoardVO member = new BoardVO();
+        BoardVO board = new BoardVO();
 
-        member.setName(request.getParameter("name"));
-        member.setPassword(request.getParameter("password"));
-        member.setPhoto(request.getParameter("photo"));
+        board.setTitle(request.getParameter("title"));
+        board.setContent(request.getParameter("content"));
+        board.setUser(request.getParameter("user"));
 
-        boardService.boardInsertService(member);
+        boardService.boardInsertService(board);
 
         return "redirect:/";
     }
@@ -51,14 +51,13 @@ public class BoardController {
 
     @RequestMapping("/updateProc")
     private String boardUpdateProc(HttpServletRequest request) throws Exception{
-        BoardVO member = new BoardVO();
+        BoardVO board = new BoardVO();
 
-        member.setName(request.getParameter("name"));
-        member.setPassword(request.getParameter("password"));
-        member.setPhoto(request.getParameter("photo"));
-        member.setId(Integer.parseInt(request.getParameter("id")));
+        board.setTitle(request.getParameter("title"));
+        board.setContent(request.getParameter("content"));
+        board.setUser(request.getParameter("user"));
 
-        boardService.boardUpdateService(member);
+        boardService.boardUpdateService(board);
 
         return "redirect:/";
     }
