@@ -87,7 +87,6 @@ public class MemberController {
 
         member.setName(request.getParameter("name"));
         member.setPassword(request.getParameter("password"));
-        member.setPhoto(request.getParameter("photo"));
         member.setId(Integer.parseInt(request.getParameter("id")));
 
         memberService.memberUpdateService(member);

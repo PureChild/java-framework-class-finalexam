@@ -19,11 +19,10 @@ public interface MemberMapper {
 
     // 사용자 추가
     public int memberInsert(MemberVO member) throws Exception;
-
-    // 사용자 추가
+    // 프로필사진 추가
     public int photoInsert(PhotoVO profile) throws Exception;
 
-    // 사용자 삭제
+    // 사용자 수정
     public int memberUpdate(MemberVO member) throws Exception;
 
     // 사용자 삭제

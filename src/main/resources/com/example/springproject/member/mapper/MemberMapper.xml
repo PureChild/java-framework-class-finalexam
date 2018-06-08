@@ -27,8 +27,8 @@
 
     <insert id="memberInsert" parameterType="com.example.springproject.member.domain.MemberVO" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO
-        userinfo (name,password,photo)
-        VALUES(#{name},#{password},#{photo})
+        userinfo (name,password)
+        VALUES(#{name},#{password})
     </insert>
 
     <insert id="photoInsert" parameterType="com.example.springproject.member.domain.PhotoVO">

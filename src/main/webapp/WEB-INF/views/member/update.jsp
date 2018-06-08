@@ -21,7 +21,7 @@
                     <input type="password" class="form-control" id="password" name="password" value="${detail.password}">
                 </div>
                 <div class="form-group">
-                    <label for="photo">이름</label>
+                    <label for="photo">프로필사진</label>
                     <input type="file" class="form-control" id="photo" name="photo" value="${detail.photo}">
                 </div>
                 <input type="hidden" name="id" value="${id}"/>

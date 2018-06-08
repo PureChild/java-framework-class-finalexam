@@ -24,7 +24,6 @@ public class MemberService {
     public int memberInsertService(MemberVO member) throws Exception{
         return memberMapper.memberInsert(member);
     }
-
     public int photoInsertService(PhotoVO profile) throws Exception{
         return memberMapper.photoInsert(profile);
     }
