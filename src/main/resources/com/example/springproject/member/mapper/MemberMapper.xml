@@ -25,10 +25,16 @@
         id = #{id}
     </select>
 
-    <insert id="memberInsert" parameterType="com.example.springproject.member.domain.MemberVO">
+    <insert id="memberInsert" parameterType="com.example.springproject.member.domain.MemberVO" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO
         userinfo (name,password,photo)
         VALUES(#{name},#{password},#{photo})
+    </insert>
+
+    <insert id="photoInsert" parameterType="com.example.springproject.member.domain.PhotoVO">
+        INSERT INTO
+        profile_img (user_id, filename, originName, url)
+        VALUES (#{user_id},#{filename},#{originName},#{url})
     </insert>
 
     <update id="memberUpdate" parameterType="com.example.springproject.member.domain.MemberVO">

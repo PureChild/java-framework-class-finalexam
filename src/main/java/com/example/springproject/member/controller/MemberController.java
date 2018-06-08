@@ -1,6 +1,7 @@
 package com.example.springproject.member.controller;
 
 import com.example.springproject.member.domain.MemberVO;
+import com.example.springproject.member.domain.PhotoVO;
 import com.example.springproject.member.service.MemberService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -38,26 +39,38 @@ public class MemberController {
     @RequestMapping("/member/insertProc")
     private String memberInsertProc(HttpServletRequest request, @RequestPart MultipartFile photo) throws Exception{
         MemberVO member = new MemberVO();
+        PhotoVO profile = new PhotoVO();
 
         member.setName(request.getParameter("name"));
         member.setPassword(request.getParameter("password"));
 
-        String sourceFileName = photo.getOriginalFilename();
-        String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
-        File destinationFile;
-        String destinationFileName;
-        String fileUrl = "C:\\Users\\SeungsooLee\\Desktop\\java-framework-class-finalexam\\src\\main\\webapp\\WEB-INF\\profile_img\\";
+        if(photo.isEmpty()){ //업로드할 파일이 없을 시
+            memberService.memberInsertService(member); //게시글 insert
+        }else {
+            String fileName = photo.getOriginalFilename();
+            String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
+            File destinationFile;
+            String destinationFileName;
+            String fileUrl = "C:\\Users\\SeungsooLee\\Desktop\\java-framework-class-finalexam\\src\\main\\webapp\\WEB-INF\\profile_img\\";
 
 
-        do {
-            destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
-            destinationFile = new File(fileUrl + destinationFileName);
-        } while (destinationFile.exists());
+            do {
+                destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
+                destinationFile = new File(fileUrl + destinationFileName);
+            } while (destinationFile.exists());
 
-        destinationFile.getParentFile().mkdirs();
-        photo.transferTo(destinationFile);
+            destinationFile.getParentFile().mkdirs();
+            photo.transferTo(destinationFile);
 
-        memberService.memberInsertService(member);
+            memberService.memberInsertService(member);
+
+            profile.setUser_id(member.getId());
+            profile.setFilename(destinationFileName);
+            profile.setOriginName(fileName);
+            profile.setUrl(fileUrl);
+
+            memberService.photoInsertService(profile);
+        }
 
         return "redirect:/member";
     }

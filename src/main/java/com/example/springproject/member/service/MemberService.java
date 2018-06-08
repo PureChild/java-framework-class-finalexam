@@ -1,6 +1,7 @@
 package com.example.springproject.member.service;
 
 import com.example.springproject.member.domain.MemberVO;
+import com.example.springproject.member.domain.PhotoVO;
 import com.example.springproject.member.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class MemberService {
 
     public int memberInsertService(MemberVO member) throws Exception{
         return memberMapper.memberInsert(member);
+    }
+
+    public int photoInsertService(PhotoVO profile) throws Exception{
+        return memberMapper.photoInsert(profile);
     }
 
     public int memberUpdateService(MemberVO member) throws Exception{
