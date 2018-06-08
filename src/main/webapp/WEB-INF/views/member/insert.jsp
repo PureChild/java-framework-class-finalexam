@@ -11,7 +11,7 @@
         <h1> 회원가입 </h1>
 
         <div class="container">
-            <form action="/member/insertProc" method="post">
+            <form action="/member/insertProc" method="post"  enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요.">

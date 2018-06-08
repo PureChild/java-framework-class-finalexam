@@ -2,13 +2,18 @@ package com.example.springproject.member.controller;
 
 import com.example.springproject.member.domain.MemberVO;
 import com.example.springproject.member.service.MemberService;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 
 @Controller
 public class MemberController {
@@ -31,12 +36,26 @@ public class MemberController {
     }
 
     @RequestMapping("/member/insertProc")
-    private String memberInsertProc(HttpServletRequest request) throws Exception{
+    private String memberInsertProc(HttpServletRequest request, @RequestPart MultipartFile photo) throws Exception{
         MemberVO member = new MemberVO();
 
         member.setName(request.getParameter("name"));
         member.setPassword(request.getParameter("password"));
-        member.setPhoto(request.getParameter("photo"));
+
+        String sourceFileName = photo.getOriginalFilename();
+        String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
+        File destinationFile;
+        String destinationFileName;
+        String fileUrl = "C:\\Users\\SeungsooLee\\Desktop\\java-framework-class-finalexam\\src\\main\\webapp\\WEB-INF\\profile_img\\";
+
+
+        do {
+            destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
+            destinationFile = new File(fileUrl + destinationFileName);
+        } while (destinationFile.exists());
+
+        destinationFile.getParentFile().mkdirs();
+        photo.transferTo(destinationFile);
 
         memberService.memberInsertService(member);
 
