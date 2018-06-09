@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label>프로필사진</label>
-                    <p>${detail.photo}</p>
+                    <p>${detail.url}</p>
                 </div>
             </form>
         </div>
