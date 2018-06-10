@@ -51,7 +51,7 @@ public class MemberController {
             String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
             File destinationFile;
             String destinationFileName;
-            String fileUrl = "C:\\Users\\SeungsooLee\\Desktop\\java-framework-class-finalexam\\src\\main\\webapp\\WEB-INF\\profile_img\\";
+            String fileUrl = "C:/Users/SeungsooLee/Desktop/java-framework-class-finalexam/src/main/webapp/WEB-INF/profile_img/";
 
 
             do {
@@ -98,5 +98,13 @@ public class MemberController {
     private String memberDelete(@PathVariable int id) throws Exception{
         memberService.memberDeleteService(id);
         return "redirect:/member";
+    }
+
+    @RequestMapping(value = "/getPhoto")
+    public String getPic(String url, HttpServletRequest request) {
+
+        request.setAttribute("path", url);
+
+        return "/image";
     }
 }

@@ -23,7 +23,7 @@
                 <core:forEach var="l" items="${list}">
                     <tr onclick="location.href='/member/detail/${l.id}'">
                         <td>${l.id}</td>
-                        <td>${l.url}</td>
+                        <td><img src="/getPhoto?url=${l.url}${l.filename}" alt="프로필사진"></td>
                         <td>${l.name}</td>
                     </tr>
                 </core:forEach>

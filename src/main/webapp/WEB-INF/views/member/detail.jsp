@@ -25,7 +25,8 @@
                 </div>
                 <div class="form-group">
                     <label>프로필사진</label>
-                    <p>${detail.url}</p>
+                    <%--<p>${detail.url}${detail.filename}</p>--%>
+                    <img src="/getPhoto?url=${detail.url}${detail.filename}" alt="프로필사진">
                 </div>
             </form>
         </div>

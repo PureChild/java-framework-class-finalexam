@@ -8,4 +8,5 @@ public class MemberVO {
     private String name;
     private String password;
     private String url;
+    private String filename;
 }
