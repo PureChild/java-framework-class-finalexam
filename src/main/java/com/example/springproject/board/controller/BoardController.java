@@ -67,4 +67,10 @@ public class BoardController {
         boardService.boardDeleteService(id);
         return "redirect:/";
     }
+
+    @RequestMapping("/like/{id}")
+    private String boardLike(@PathVariable int id) throws Exception{
+        boardService.boardLikeService(id);
+        return "redirect:/detail/{id}";
+    }
 }

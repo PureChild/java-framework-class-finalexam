@@ -31,4 +31,8 @@ public class BoardService {
     public int boardDeleteService(int id) throws Exception{
         return boardMapper.boardDelete(id);
     }
+
+    public int boardLikeService(int id) {
+        return boardMapper.boardLike(id);
+    }
 }

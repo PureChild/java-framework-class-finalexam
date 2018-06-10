@@ -22,4 +22,7 @@ public interface BoardMapper {
 
     // 게시글 삭제
     public int boardDelete(int id) throws Exception;
+
+    // 공감
+    public int boardLike(int id);
 }

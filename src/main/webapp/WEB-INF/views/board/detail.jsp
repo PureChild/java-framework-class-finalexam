@@ -32,6 +32,7 @@
                     <p>${detail.cntLike}</p>
                 </div>
             </form>
+            <button class="btn btn-primary" onclick="location.href='/like/${detail.bno}'">공감</button>
         </div>
 
         <%@ include file="../bootstrap.jsp" %>
