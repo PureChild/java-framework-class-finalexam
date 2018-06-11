@@ -5,6 +5,8 @@ import com.example.springproject.member.domain.PhotoVO;
 import com.example.springproject.member.service.MemberService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,16 +19,20 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 @Controller
+@RequestMapping("/member/**")
 public class MemberController {
+    // 로깅을 위한 변수
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
     @Resource(name="com.example.springproject.member.service.MemberService")
     MemberService memberService;
 
-    @RequestMapping("/member") // 사용자 리스트 화면 호출
+    @RequestMapping("list") // 사용자 리스트 화면 호출
     private String memberList(Model model) throws Exception{
         model.addAttribute("list", memberService.memberListService());
         return "member/list";
     }
-    @RequestMapping("/member/detail/{id}")
+    @RequestMapping("detail/{id}")
     private String memberDetail(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(id));
         return "member/detail";
@@ -36,7 +42,7 @@ public class MemberController {
         return "member/insert";
     }
 
-    @RequestMapping("/member/insertProc")
+    @RequestMapping("insertProc")
     private String memberInsertProc(HttpServletRequest request, @RequestPart MultipartFile photo) throws Exception{
         MemberVO member = new MemberVO();
         PhotoVO profile = new PhotoVO();
@@ -72,16 +78,16 @@ public class MemberController {
             memberService.photoInsertService(profile);
         }
 
-        return "redirect:/member";
+        return "redirect:/member/list";
     }
 
-    @RequestMapping("/member/update/{id}") // 사용자 수정폼 호출
+    @RequestMapping("update/{id}") // 사용자 수정폼 호출
     private String memberUpdateForm(@PathVariable int id, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(id));
         return "member/update";
     }
 
-    @RequestMapping("/member/updateProc")
+    @RequestMapping("updateProc")
     private String memberUpdateProc(HttpServletRequest request) throws Exception{
         MemberVO member = new MemberVO();
 
@@ -91,20 +97,25 @@ public class MemberController {
 
         memberService.memberUpdateService(member);
 
-        return "redirect:/member";
+        return "redirect:/member/list";
     }
 
-    @RequestMapping("/member/delete/{id}")
+    @RequestMapping("delete/{id}")
     private String memberDelete(@PathVariable int id) throws Exception{
         memberService.memberDeleteService(id);
-        return "redirect:/member";
+        return "redirect:/member/list";
     }
 
-    @RequestMapping(value = "/getPhoto")
+    @RequestMapping("getPhoto")
     public String getPic(String url, HttpServletRequest request) {
 
         request.setAttribute("path", url);
 
-        return "/image";
+        return "image";
+    }
+
+    @RequestMapping("sign.in")
+    public String signIn(){
+        return "member/signin";
     }
 }
