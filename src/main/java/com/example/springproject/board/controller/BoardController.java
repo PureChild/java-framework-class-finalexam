@@ -101,7 +101,7 @@ public class BoardController {
             returnURL = "redirect:/";
             //일치하지 않으면 로그인페이지 재이동
         }else {
-//            returnURL = "redirect:/login";
+            returnURL = "redirect:/login";
         }
         return returnURL;
     }
