@@ -21,6 +21,7 @@
             </core:when>
             <core:otherwise>
                 <button class="btn btn-success" onclick="location.href='/login'">로그인</button>
+                <button class="btn btn-info" onclick="location.href='/member/insert'">회원가입</button>
             </core:otherwise>
         </core:choose>
         <div class="container">

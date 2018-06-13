@@ -11,10 +11,22 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/login_confirm" method="post">
-    <input type="text" name="name"/>
-    <input type="password" name="password"/>
-    <input type="submit" value="전송" />
-</form>
+    <h1> 로그인 </h1>
+
+    <div class="container">
+        <form action="/login_confirm" method="post">
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요.">
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요.">
+            </div>
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+    </div>
+
+    <%@ include file="bootstrap.jsp" %>
 </body>
 </html>
