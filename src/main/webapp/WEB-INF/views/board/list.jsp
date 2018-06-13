@@ -17,6 +17,7 @@
         <core:choose>
             <core:when test="${sessionScope.login ne null}">
                 <button class="btn btn-danger" onclick="location.href='/logout'">로그아웃</button>
+                <p>${sessionScope.login.login_user}님 환영합니다</p>
             </core:when>
             <core:otherwise>
                 <button class="btn btn-success" onclick="location.href='/login'">로그인</button>
