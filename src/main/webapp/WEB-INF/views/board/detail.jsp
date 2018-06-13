@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <h1> 게시판 </h1>
+        <h1> ${detail.title} </h1>
 
         <core:if test="${sessionScope.login.login_user eq detail.user}">
             <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
@@ -19,10 +19,6 @@
         <div class="container">
             <form action="/insertProc" method="post">
                 <div class="form-group">
-                    <label>제목</label>
-                    <p>${detail.title}</p>
-                </div>
-                <div class="form-group">
                     <label>내용</label>
                     <p>${detail.content}</p>
                 </div>
@@ -31,11 +27,10 @@
                     <p>${detail.user}</p>
                 </div>
                 <div class="form-group">
-                    <label>공감</label>
-                    <p>${detail.cntLike}</p>
+                    <p>${detail.cntLike} 명이 공감하였습니다</p>
                 </div>
             </form>
-            <core:if test="${sessionScope.login.login_user ne detail.user}">
+            <core:if test="${sessionScope.login.login_user ne null && sessionScope.login.login_user ne detail.user}">
                 <button class="btn btn-primary" onclick="location.href='/like/${detail.bno}'">공감</button>
             </core:if>
         </div>

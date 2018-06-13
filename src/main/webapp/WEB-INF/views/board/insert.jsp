@@ -21,8 +21,7 @@
                     <textarea class="form-control" id="content" name="content" placeholder="내용을 입력하세요."></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="user">작성자</label>
-                    <input type="text" class="form-control" id="user" name="user"></input>
+                    <input type="hidden" name="user" value="${sessionScope.login.login_user}"/>
                 </div>
                 <button type="submit" class="btn btn-primary">작성</button>
             </form>
