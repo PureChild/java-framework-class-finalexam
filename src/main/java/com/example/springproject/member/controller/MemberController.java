@@ -23,11 +23,6 @@ public class MemberController {
     @Resource(name="com.example.springproject.member.service.MemberService")
     MemberService memberService;
 
-    @RequestMapping("/member") // 사용자 리스트 화면 호출
-    private String memberList(Model model) throws Exception{
-        model.addAttribute("list", memberService.memberListService());
-        return "member/list";
-    }
     @RequestMapping("/member/detail/{name}")
     private String memberDetail(@PathVariable String name, Model model) throws Exception{
         model.addAttribute("detail", memberService.memberDetailService(name));

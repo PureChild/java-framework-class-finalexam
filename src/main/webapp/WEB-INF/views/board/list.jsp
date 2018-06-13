@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <h1>게시글 목록</h1>
+        <h1>국민청원게시판</h1>
         <button class="btn btn-primary" onclick="location.href='/insert'">글쓰기</button>
         <core:choose>
             <core:when test="${sessionScope.login ne null}">
