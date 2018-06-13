@@ -83,6 +83,11 @@ public class BoardController {
     private String login(){
         return "login";
     }
+    @RequestMapping("/logout")
+    private String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/";
+    }
 
     @RequestMapping("/login_confirm")
     private String login(HttpServletRequest request) throws Exception{
