@@ -73,4 +73,9 @@ public class BoardController {
         boardService.boardLikeService(id);
         return "redirect:/detail/{id}";
     }
+
+    @RequestMapping("/login") // 게시글 리스트 화면 호출
+    private String login() throws Exception{
+        return "login";
+    }
 }
