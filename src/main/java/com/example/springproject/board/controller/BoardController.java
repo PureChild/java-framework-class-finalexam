@@ -91,10 +91,10 @@ public class BoardController {
 
     @RequestMapping("/login_confirm")
     private String login(HttpServletRequest request) throws Exception{
-//        int confirm = memberService.confirmMember(request.getParameter("name"),request.getParameter("password"));
+        int confirm = memberService.confirmMember(request.getParameter("name"),request.getParameter("password"));
         String returnURL = "";
         // DB에 있는 유저일 경우 세션 키 생성
-        if(request.getParameter("name").equals("test") && request.getParameter("password").equals("test")){
+        if(confirm == 1){
             Map<String, Object> map = new HashMap<String,Object>();
             map.put("login_user", request.getParameter("name"));
             request.getSession().setAttribute("login", map);

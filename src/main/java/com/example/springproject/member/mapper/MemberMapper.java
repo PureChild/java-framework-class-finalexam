@@ -2,6 +2,7 @@ package com.example.springproject.member.mapper;
 
 import com.example.springproject.member.domain.MemberVO;
 import com.example.springproject.member.domain.PhotoVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,5 +29,5 @@ public interface MemberMapper {
     // 사용자 삭제
     public int memberDelete(int id) throws Exception;
 
-    public int confirmMember(String name, String password) throws Exception;
+    public int confirmMember(@Param("name") String name, @Param("password") String password) throws Exception;
 }

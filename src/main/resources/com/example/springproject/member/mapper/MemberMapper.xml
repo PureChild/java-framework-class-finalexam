@@ -67,7 +67,7 @@
         DELETE FROM userinfo WHERE id = #{id}
     </delete>
 
-    <select id="confirmMember" parameterType="String">
+    <select id="confirmMember" parameterType="String" resultType="int">
         SELECT
         COUNT(*)
         FROM userinfo
