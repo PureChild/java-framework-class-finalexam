@@ -35,4 +35,8 @@ public class MemberService {
     public int memberDeleteService(int id) throws Exception{
         return memberMapper.memberDelete(id);
     }
+
+    public int confirmMember(String name, String password) throws Exception {
+        return memberMapper.confirmMember(name, password);
+    }
 }

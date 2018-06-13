@@ -66,4 +66,11 @@
     <delete id="memberDelete" parameterType="int">
         DELETE FROM userinfo WHERE id = #{id}
     </delete>
+
+    <select id="confirmMember" parameterType="String">
+        SELECT
+        COUNT(*)
+        FROM userinfo
+        WHERE name = #{name} and password = #{password}
+    </select>
 </mapper>

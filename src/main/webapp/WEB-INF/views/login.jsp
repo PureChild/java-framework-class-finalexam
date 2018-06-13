@@ -11,8 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/login" method="post">
-    <input type="text" name="id"/>
+<form action="/login_confirm" method="post">
+    <input type="text" name="name"/>
     <input type="password" name="password"/>
     <input type="submit" value="전송" />
 </form>

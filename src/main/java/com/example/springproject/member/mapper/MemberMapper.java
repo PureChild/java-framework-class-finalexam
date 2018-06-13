@@ -27,4 +27,6 @@ public interface MemberMapper {
 
     // 사용자 삭제
     public int memberDelete(int id) throws Exception;
+
+    public int confirmMember(String name, String password) throws Exception;
 }
