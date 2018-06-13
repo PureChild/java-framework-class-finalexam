@@ -11,7 +11,7 @@
     <body>
         <h1> ${detail.title} </h1>
 
-        <core:if test="${sessionScope.login.login_user eq detail.user}">
+        <core:if test="${sessionScope.login.login_user ne null && sessionScope.login.login_user eq detail.user}">
             <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
             <button class="btn btn-danger" onclick="location.href='/delete/${detail.bno}'">삭제</button>
         </core:if>
