@@ -72,7 +72,7 @@ public class MemberController {
             memberService.photoInsertService(profile);
         }
 
-        return "redirect:/member";
+        return "redirect:/";
     }
 
     @RequestMapping("/member/update/{id}") // 사용자 수정폼 호출
