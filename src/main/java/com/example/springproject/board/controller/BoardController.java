@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,7 +92,7 @@ public class BoardController {
     }
 
     @RequestMapping("/login_confirm")
-    private String login(HttpServletRequest request) throws Exception{
+    private String login(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int confirm = memberService.confirmMember(request.getParameter("name"),request.getParameter("password"));
         String returnURL = "";
         // DB에 있는 유저일 경우 세션 키 생성
@@ -101,7 +103,10 @@ public class BoardController {
             returnURL = "redirect:/";
             //일치하지 않으면 로그인페이지 재이동
         }else {
-            returnURL = "redirect:/login";
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('Id 혹은 Password를 확인해주세요!'); location.href='/login'</script>");
+            out.flush();
         }
         return returnURL;
     }
