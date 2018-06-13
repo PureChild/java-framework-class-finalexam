@@ -25,6 +25,8 @@ public interface MemberMapper {
 
     // 사용자 수정
     public int memberUpdate(MemberVO member) throws Exception;
+    // 프로필사진 수정
+    public int photoUpdate(PhotoVO profile) throws Exception;
 
     // 사용자 삭제
     public int memberDelete(int id) throws Exception;

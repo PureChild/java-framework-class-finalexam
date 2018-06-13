@@ -47,7 +47,7 @@ public class MemberController {
         member.setPassword(request.getParameter("password"));
 
         if(photo.isEmpty()){ //업로드할 파일이 없을 시
-            memberService.memberInsertService(member); //게시글 insert
+            memberService.memberInsertService(member); // 유저정보 insert
         }else {
             String fileName = photo.getOriginalFilename();
             String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
@@ -84,14 +84,41 @@ public class MemberController {
     }
 
     @RequestMapping("/member/updateProc")
-    private String memberUpdateProc(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    private String memberUpdateProc(HttpServletRequest request, HttpServletResponse response, @RequestPart MultipartFile photo) throws Exception{
         MemberVO member = new MemberVO();
+        PhotoVO profile = new PhotoVO();
 
         member.setName(request.getParameter("name"));
         member.setPassword(request.getParameter("password"));
         member.setId(Integer.parseInt(request.getParameter("id")));
 
-        memberService.memberUpdateService(member);
+        if(photo.isEmpty()){ //업로드할 파일이 없을 시
+            memberService.memberUpdateService(member); // 유저정보 update
+        }else {
+            String fileName = photo.getOriginalFilename();
+            String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
+            File destinationFile;
+            String destinationFileName;
+            String fileUrl = "C:/Users/SeungsooLee/Desktop/java-framework-class-finalexam/src/main/webapp/WEB-INF/profile_img/";
+
+
+            do {
+                destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
+                destinationFile = new File(fileUrl + destinationFileName);
+            } while (destinationFile.exists());
+
+            destinationFile.getParentFile().mkdirs();
+            photo.transferTo(destinationFile);
+
+            memberService.memberUpdateService(member);
+
+            profile.setUser_id(member.getId());
+            profile.setFilename(destinationFileName);
+            profile.setOriginName(fileName);
+            profile.setUrl(fileUrl);
+
+            memberService.photoUpdateService(profile);
+        }
 
         request.getSession().invalidate();
 

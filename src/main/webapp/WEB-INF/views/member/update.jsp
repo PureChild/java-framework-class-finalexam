@@ -11,7 +11,7 @@
         <h1> 사용자 정보 수정 </h1>
 
         <div class="container">
-            <form action="/member/updateProc" method="post">
+            <form action="/member/updateProc" method="post"  enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" id="name" name="name" value="${detail.name}">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="photo">프로필사진</label>
-                    <input type="file" class="form-control" id="photo" name="photo" value="${detail.photo}">
+                    <input type="file" class="form-control" id="photo" name="photo"></input>
                 </div>
                 <input type="hidden" name="id" value="${detail.id}"/>
                 <%--<input type="input" name="id" value="${id}"/>--%>

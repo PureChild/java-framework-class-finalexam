@@ -57,6 +57,15 @@
         WHERE id = #{id}
     </update>
 
+    <insert id="photoUpdate" parameterType="com.example.springproject.member.domain.PhotoVO">
+        UPDATE profile_img
+        SET
+        filename = #{filename},
+        originName = #{originName},
+        url = #{url}
+        WHERE user_id = #{user_id}
+    </insert>
+
     <delete id="memberDelete" parameterType="int">
         DELETE FROM userinfo WHERE id = #{id}
     </delete>

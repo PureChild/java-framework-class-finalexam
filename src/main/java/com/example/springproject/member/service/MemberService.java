@@ -31,6 +31,9 @@ public class MemberService {
     public int memberUpdateService(MemberVO member) throws Exception{
         return memberMapper.memberUpdate(member);
     }
+    public int photoUpdateService(PhotoVO profile) throws Exception{
+        return memberMapper.photoUpdate(profile);
+    }
 
     public int memberDeleteService(int id) throws Exception{
         return memberMapper.memberDelete(id);
