@@ -15,6 +15,10 @@
         SELECT
         *
         FROM board
+        JOIN userinfo
+        ON board.user = userinfo.name
+        JOIN profile_img
+        ON userinfo.id = profile_img.user_id
         WHERE
         bno = #{bno}
     </select>

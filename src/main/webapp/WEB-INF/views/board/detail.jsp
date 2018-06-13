@@ -19,12 +19,12 @@
         <div class="container">
             <form action="/insertProc" method="post">
                 <div class="form-group">
-                    <label>내용</label>
-                    <p>${detail.content}</p>
+                    <img src="/getPhoto?url=${detail.url}${detail.filename}" alt="프로필사진" width="50px" height="50px">
+                    <span>${detail.user}님이 작성하신 글입니다</span>
                 </div>
                 <div class="form-group">
-                    <label>작성자</label>
-                    <p>${detail.user}</p>
+                    <label>내용</label>
+                    <p>${detail.content}</p>
                 </div>
                 <div class="form-group">
                     <p>${detail.cntLike} 명이 공감하였습니다</p>
