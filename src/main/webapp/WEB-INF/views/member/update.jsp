@@ -18,13 +18,14 @@
                 </div>
                 <div class="form-group">
                     <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" name="password" value="${detail.password}">
+                    <input type="text" class="form-control" id="password" name="password" value="${detail.password}">
                 </div>
                 <div class="form-group">
                     <label for="photo">프로필사진</label>
                     <input type="file" class="form-control" id="photo" name="photo" value="${detail.photo}">
                 </div>
-                <input type="hidden" name="id" value="${id}"/>
+                <input type="hidden" name="id" value="${detail.id}"/>
+                <%--<input type="input" name="id" value="${id}"/>--%>
                 <button type="submit" class="btn btn-primary">수정</button>
             </form>
         </div>

@@ -16,7 +16,7 @@ public interface MemberMapper {
     public List<MemberVO> memberList() throws Exception;
 
     // 사용자 상세
-    public MemberVO memberDetail(int id) throws Exception;
+    public MemberVO memberDetail(String name) throws Exception;
 
     // 사용자 추가
     public int memberInsert(MemberVO member) throws Exception;

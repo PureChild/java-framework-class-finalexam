@@ -17,8 +17,8 @@ public class MemberService {
         return memberMapper.memberList();
     }
 
-    public MemberVO memberDetailService(int id) throws Exception{
-        return memberMapper.memberDetail(id);
+    public MemberVO memberDetailService(String name) throws Exception{
+        return memberMapper.memberDetail(name);
     }
 
     public int memberInsertService(MemberVO member) throws Exception{

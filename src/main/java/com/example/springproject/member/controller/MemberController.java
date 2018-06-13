@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.PrintWriter;
 
 @Controller
 public class MemberController {
@@ -26,9 +28,9 @@ public class MemberController {
         model.addAttribute("list", memberService.memberListService());
         return "member/list";
     }
-    @RequestMapping("/member/detail/{id}")
-    private String memberDetail(@PathVariable int id, Model model) throws Exception{
-        model.addAttribute("detail", memberService.memberDetailService(id));
+    @RequestMapping("/member/detail/{name}")
+    private String memberDetail(@PathVariable String name, Model model) throws Exception{
+        model.addAttribute("detail", memberService.memberDetailService(name));
         return "member/detail";
     }
     @RequestMapping("/member/insert") // 사용자 작성폼 호출
@@ -75,14 +77,14 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @RequestMapping("/member/update/{id}") // 사용자 수정폼 호출
-    private String memberUpdateForm(@PathVariable int id, Model model) throws Exception{
-        model.addAttribute("detail", memberService.memberDetailService(id));
+    @RequestMapping("/member/update/{name}") // 사용자 수정폼 호출
+    private String memberUpdateForm(@PathVariable String name, Model model) throws Exception{
+        model.addAttribute("detail", memberService.memberDetailService(name));
         return "member/update";
     }
 
     @RequestMapping("/member/updateProc")
-    private String memberUpdateProc(HttpServletRequest request) throws Exception{
+    private String memberUpdateProc(HttpServletRequest request, HttpServletResponse response) throws Exception{
         MemberVO member = new MemberVO();
 
         member.setName(request.getParameter("name"));
@@ -91,13 +93,20 @@ public class MemberController {
 
         memberService.memberUpdateService(member);
 
-        return "redirect:/member";
+        request.getSession().invalidate();
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('다시 로그인해주세요!'); location.href='/'</script>");
+        out.flush();
+
+        return "redirect:/";
     }
 
     @RequestMapping("/member/delete/{id}")
     private String memberDelete(@PathVariable int id) throws Exception{
         memberService.memberDeleteService(id);
-        return "redirect:/member";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/getPhoto")

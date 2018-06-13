@@ -10,8 +10,8 @@
     <body>
         <h1> 회원정보 </h1>
 
-        <button class="btn btn-primary" onclick="location.href='/member/update/${detail.id}'">수정</button>
-        <button class="btn btn-danger" onclick="location.href='/member/delete/${detail.id}'">삭제</button>
+        <button class="btn btn-primary" onclick="location.href='/member/update/${detail.name}'">수정</button>
+        <button class="btn btn-danger" onclick="location.href='/member/delete/${detail.id}'">탈퇴</button>
 
         <div class="container">
             <form action="/member/insertProc" method="post">
@@ -20,13 +20,9 @@
                     <p>${detail.name}</p>
                 </div>
                 <div class="form-group">
-                    <label>비밀번호</label>
-                    <p>${detail.password}</p>
-                </div>
-                <div class="form-group">
                     <label>프로필사진</label>
                     <%--<p>${detail.url}${detail.filename}</p>--%>
-                    <img src="/getPhoto?url=${detail.url}${detail.filename}" alt="프로필사진">
+                    <img src="/getPhoto?url=${detail.url}${detail.filename}" alt="프로필사진" width="100px" height="100px">
                 </div>
             </form>
         </div>

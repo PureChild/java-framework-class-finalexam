@@ -20,14 +20,14 @@
         ORDER BY id
     </select>
 
-    <select id="memberDetail" parameterType="int" resultType="com.example.springproject.member.domain.MemberVO">
+    <select id="memberDetail" parameterType="String" resultType="com.example.springproject.member.domain.MemberVO">
         SELECT
         *
         FROM userinfo
         LEFT OUTER JOIN profile_img
         ON userinfo.id = profile_img.user_id
         WHERE
-        id = #{id}
+        name = #{name}
     </select>
 
     <insert id="memberInsert" parameterType="com.example.springproject.member.domain.MemberVO" useGeneratedKeys="true" keyProperty="id">
@@ -49,16 +49,10 @@
             name = #{name}
         </if>
 
-        <if test="name != null and (password != null or photo !=null)"> , </if>
+        <if test="name != null and password != null"> , </if>
 
         <if test="password != null">
             password = #{password}
-        </if>
-
-        <if test="password != null and photo !=null"> , </if>
-
-        <if test="photo != null">
-            photo = #{photo}
         </if>
         WHERE id = #{id}
     </update>
