@@ -104,8 +104,16 @@ public class MemberController {
     }
 
     @RequestMapping("/member/delete/{id}")
-    private String memberDelete(@PathVariable int id) throws Exception{
+    private String memberDelete(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) throws Exception{
         memberService.memberDeleteService(id);
+
+        request.getSession().invalidate();
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('안녕히가세요..'); location.href='/'</script>");
+        out.flush();
+
         return "redirect:/";
     }
 
