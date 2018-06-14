@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.springproject.member.mapper.MemberMapper">
+
+    <select id="cntMember" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM userinfo
+    </select>
+
+    <select id="memberList" resultType="com.example.springproject.member.domain.MemberVO">
+        SELECT
+        *
+        FROM userinfo
+        LEFT OUTER JOIN profile_img
+        ON userinfo.id = profile_img.user_id
+        ORDER BY id
+    </select>
+
+    <select id="memberDetail" parameterType="String" resultType="com.example.springproject.member.domain.MemberVO">
+        SELECT
+        *
+        FROM userinfo
+        LEFT OUTER JOIN profile_img
+        ON userinfo.id = profile_img.user_id
+        WHERE
+        name = #{name}
+    </select>
+
+    <insert id="memberInsert" parameterType="com.example.springproject.member.domain.MemberVO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        userinfo (name,password)
+        VALUES(#{name},#{password})
+    </insert>
+
+    <insert id="photoInsert" parameterType="com.example.springproject.member.domain.PhotoVO">
+        INSERT INTO
+        profile_img (user_id, filename, originName, url)
+        VALUES (#{user_id},#{filename},#{originName},#{url})
+    </insert>
+
+    <update id="memberUpdate" parameterType="com.example.springproject.member.domain.MemberVO">
+        UPDATE userinfo
+        SET
+        <if test="name != null">
+            name = #{name}
+        </if>
+
+        <if test="name != null and password != null"> , </if>
+
+        <if test="password != null">
+            password = #{password}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <insert id="photoUpdate" parameterType="com.example.springproject.member.domain.PhotoVO">
+        UPDATE profile_img
+        SET
+        filename = #{filename},
+        originName = #{originName},
+        url = #{url}
+        WHERE user_id = #{user_id}
+    </insert>
+
+    <delete id="memberDelete" parameterType="int">
+        DELETE FROM userinfo WHERE id = #{id}
+    </delete>
+
+    <select id="confirmMember" parameterType="String" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM userinfo
+        WHERE name = #{name} and password = #{password}
+    </select>
+</mapper>

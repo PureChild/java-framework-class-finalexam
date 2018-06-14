@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.springproject.board.mapper.BoardMapper">
+
+    <select id="boardList" resultType="com.example.springproject.board.domain.BoardVO">
+        SELECT
+        *
+        FROM board
+    </select>
+
+    <select id="boardDetail" parameterType="int" resultType="com.example.springproject.board.domain.BoardVO">
+        SELECT
+        *
+        FROM board
+        JOIN userinfo
+        ON board.user = userinfo.name
+        JOIN profile_img
+        ON userinfo.id = profile_img.user_id
+        WHERE
+        bno = #{bno}
+    </select>
+
+    <insert id="boardInsert" parameterType="com.example.springproject.board.domain.BoardVO">
+        INSERT INTO
+        board (title,content,user)
+        VALUES(#{title},#{content},#{user})
+    </insert>
+
+    <update id="boardUpdate" parameterType="com.example.springproject.board.domain.BoardVO">
+        UPDATE board
+        SET
+        <if test="title != null">
+            title = #{title}
+        </if>
+
+        <if test="title != null and content != null"> , </if>
+
+        <if test="content != null">
+            content = #{content}
+        </if>
+        WHERE bno = #{bno}
+    </update>
+
+    <delete id="boardDelete" parameterType="int">
+        DELETE FROM board WHERE bno = #{bno}
+    </delete>
+
+    <delete id="boardLike" parameterType="int">
+        UPDATE board
+        SET cntLike = cntLike + 1
+        WHERE bno = #{bno}
+    </delete>
+</mapper>

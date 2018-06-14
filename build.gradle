@@ -1,3 +1,18 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
 apply plugin: 'maven'
 
@@ -6,8 +21,8 @@ version = '0.0.1-SNAPSHOT'
 
 description = """springproject"""
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
@@ -31,6 +46,6 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.0'
     compile group: 'commons-io', name: 'commons-io', version:'2.5'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.2.RELEASE'
-    providedCompile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version:'2.0.2.RELEASE'
-    providedCompile group: 'org.projectlombok', name: 'lombok', version:'1.16.16'
+//    providedCompile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version:'2.0.2.RELEASE'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.16.16'
 }
